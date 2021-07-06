@@ -8,14 +8,39 @@ body {
 
 .card {
     margin-top: 50px;
-    background-color: lightsalmon;
+    background-color:thistle;
     border-radius: 20px;
     width: 600px;
     min-height: 600px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px;
 }
 
 .card > h1 {
-    color: darkslategray;
+    color: darkslateblue;
+    font-weight: 800;
+}
+
+.clock {
+    background-color: darkslateblue;
+    width: 600px;
+    height: 200px;
+    margin: 50px;
+    border-radius: 20px;
+}
+
+.clock > .display {
+    display: flex;
+    flex: 1 1 1;
+    align-items: center;
+    justify-content: center;
+    color: thistle;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 80px;
+}
+
+.clock > .number {
+    margin: 20px;
 }
