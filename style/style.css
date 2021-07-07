@@ -8,7 +8,7 @@ body {
 
 .card {
     margin-top: 50px;
-    background-color:thistle;
+    background-color: thistle;
     border-radius: 20px;
     width: 600px;
     min-height: 600px;
@@ -18,7 +18,7 @@ body {
     padding: 40px;
 }
 
-.card > h1 {
+.card>h1 {
     color: darkslateblue;
     font-weight: 800;
 }
@@ -34,7 +34,7 @@ body {
     justify-content: center;
 }
 
-.clock > .display {
+.clock>.display {
     display: flex;
     flex: 1 1 1;
     color: thistle;
@@ -42,9 +42,9 @@ body {
     font-size: 80px;
 }
 
-.clock > .display > .number {
+.clock>.display>.number {
     margin: 10px;
     padding: 10px;
-    background-color:darkblue;
+    background-color: darkblue;
     border-radius: 5px;
 }
