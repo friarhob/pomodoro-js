@@ -53,9 +53,6 @@ body {
     border-radius: 10px;
 }
 
-.controls {
-    margin-bottom: 10px;
-}
 .controls>button {
     background: none;
     border-style: none;
@@ -64,4 +61,26 @@ body {
 .controls>button>span {
     font-size: 80px;
     color:thistle;
+}
+
+.settimer {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: thistle;
+    font-weight: 500;
+    font-size: 18px;   
+    margin-bottom: 10px;
+}
+
+.settimer>.label {
+    padding-right: 10px;
+}
+
+.settimer>input {
+    background-color:thistle;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: darkslateblue;
+    width: 60px;
+    padding-left: 10px;
 }
