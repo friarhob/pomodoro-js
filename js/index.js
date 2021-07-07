@@ -1,5 +1,7 @@
 let endTime;
 let cron;
+let running = true;
+let remainingTime;
 
 function reset() {
     document.getElementById("hour").innerHTML = "00";
@@ -14,6 +16,20 @@ function start() {
     cron = setInterval(() => {
         update();
     }, 100);
+}
+
+function pause() {
+    if (running) {
+        remainingTime = endTime - Date.now();
+        clearInterval(cron);
+        running = false;
+    } else {
+        endTime = Date.now() + remainingTime;
+        cron = setInterval(() => {
+            update();
+        }, 100);
+        running = true;
+    }
 }
 
 function update() {
