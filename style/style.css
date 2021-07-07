@@ -30,13 +30,16 @@ body {
     margin: 50px;
     border-radius: 20px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 .clock>.display {
+    width: 100%;
+    justify-content: center;
     display: flex;
-    flex: 1 1 1;
+    flex: 33% 34% 33%;
     color: thistle;
     font-family: 'Source Code Pro', monospace;
     font-size: 80px;
@@ -44,6 +47,7 @@ body {
 
 .clock>.display>.number {
     margin: 10px;
+    margin-top: 20px;
     padding: 10px;
     background-color: darkblue;
     border-radius: 5px;
