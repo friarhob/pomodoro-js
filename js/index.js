@@ -22,6 +22,7 @@ function update()
     if(milisseconds <= 0)
     {
         clearInterval(cron); //to be updated - now it works just as a simple timer
+        reset();
     } else {
         let seconds = Math.floor(milisseconds/1000);
         document.getElementById("second").innerHTML = format(seconds%60);
