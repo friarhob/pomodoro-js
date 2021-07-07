@@ -29,18 +29,22 @@ body {
     height: 200px;
     margin: 50px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .clock > .display {
     display: flex;
     flex: 1 1 1;
-    align-items: center;
-    justify-content: center;
     color: thistle;
     font-family: 'Source Code Pro', monospace;
     font-size: 80px;
 }
 
-.clock > .number {
-    margin: 20px;
+.clock > .display > .number {
+    margin: 10px;
+    padding: 10px;
+    background-color:darkblue;
+    border-radius: 5px;
 }
