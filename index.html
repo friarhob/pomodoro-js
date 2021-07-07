@@ -28,13 +28,13 @@
                 <div class="number" id="second">00</div>
             </div>
             <div class="controls">
-                <button type="button" id="start-stop"><span class="material-icons">play_circle_filled</span></button>
+                <button type="button" id="start-stop" onclick="start()"><span class="material-icons">play_circle_filled</span></button>
                 <button type="button" id="pause"><span class="material-icons">pause_circle_filled</span></button>
-                <button type="button" id="reset"><span class="material-icons">replay_circle_filled</span></button>
+                <button type="button" id="reset" onclick="reset()"><span class="material-icons">replay_circle_filled</span></button>
             </div>
             <div class="settimer">
                 <span class="label">Set timer (minutes):</span>
-                <input type="number" value="25">
+                <input type="number" id="pomodoro-minutes" value="25">
             </div>
         </div>
         <div class="tasks">
