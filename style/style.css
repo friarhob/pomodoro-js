@@ -26,7 +26,7 @@ body {
 .clock {
     background-color: darkslateblue;
     width: 600px;
-    height: 200px;
+    min-height: 200px;
     margin: 50px;
     border-radius: 20px;
     display: flex;
@@ -51,4 +51,17 @@ body {
     padding: 10px;
     background-color: darkblue;
     border-radius: 10px;
+}
+
+.controls {
+    margin-bottom: 10px;
+}
+.controls>button {
+    background: none;
+    border-style: none;
+}
+
+.controls>button>span {
+    font-size: 80px;
+    color:thistle;
 }
