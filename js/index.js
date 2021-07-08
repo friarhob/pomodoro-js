@@ -4,11 +4,13 @@ let running = true;
 let remainingTime;
 let pomodoro = false;
 let alertSound = new Audio("https://actions.google.com/sounds/v1/cartoon/cartoon_cowbell.ogg");
+let firstStart = false;
 
 function reset() {
     document.getElementById("start").innerHTML = "<span class='material-icons'>play_circle_filled</span>";
     document.getElementById("pause").innerHTML = "<span class='material-icons'>pause_circle_filled</span>";
-
+    firstStart = false;
+    
     document.getElementById("hour").innerHTML = "00";
     document.getElementById("minute").innerHTML = "00";
     document.getElementById("second").innerHTML = "00";
@@ -18,6 +20,7 @@ function reset() {
 function start() {
     pomodoro = true;
     running = true;
+    firstStart = true;
     endTime = Date.now() + parseInt(document.getElementById("pomodoro-minutes").value) * 60 * 1000;
 
     document.getElementById("start").innerHTML = "<span class='material-icons'>next_plan</span>";
@@ -30,19 +33,21 @@ function start() {
 }
 
 function pause() {
-    if (running) {
-        remainingTime = endTime - Date.now();
-        clearInterval(cron);
-        running = false;
-        document.getElementById("pause").innerHTML = "<span class='material-icons'>not_started</span>";
-    } else {
-        endTime = Date.now() + remainingTime;
-        clearInterval(cron);
-        cron = setInterval(() => {
-            update();
-        }, 100);
-        running = true;
-        document.getElementById("pause").innerHTML = "<span class='material-icons'>pause_circle_filled</span>";
+    if(firstStart) {
+        if (running) {
+            remainingTime = endTime - Date.now();
+            clearInterval(cron);
+            running = false;
+            document.getElementById("pause").innerHTML = "<span class='material-icons'>not_started</span>";
+        } else {
+            endTime = Date.now() + remainingTime;
+            clearInterval(cron);
+            cron = setInterval(() => {
+                update();
+            }, 100);
+            running = true;
+            document.getElementById("pause").innerHTML = "<span class='material-icons'>pause_circle_filled</span>";
+        }
     }
 }
 
