@@ -58,7 +58,7 @@ function update() {
         }
         alertSound.play();
     } else {
-        let seconds = Math.floor(milisseconds / 1000);
+        let seconds = Math.floor((milisseconds+800) / 1000);
         document.getElementById("second").innerHTML = format(seconds % 60);
 
         let minutes = Math.floor(seconds / 60);
