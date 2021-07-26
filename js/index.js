@@ -33,7 +33,7 @@ function start() {
 }
 
 function pause() {
-    if(firstStart) {
+    if(firstStart) { //prevents pause to be pressed before pressing start after a reset
         if (running) {
             remainingTime = endTime - Date.now();
             clearInterval(cron);
