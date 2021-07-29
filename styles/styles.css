@@ -1,86 +1,85 @@
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: mediumpurple;
-    display: flex;
-    justify-content: center;
-
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: mediumpurple;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
-    margin-top: 50px;
-    background-color: thistle;
-    border-radius: 20px;
-    width: 600px;
-    min-height: 600px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 40px;
+  margin-top: 50px;
+  background-color: thistle;
+  border-radius: 20px;
+  width: 600px;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px;
 }
 
-.card>h1 {
-    color: darkslateblue;
-    font-weight: 800;
+.card > h1 {
+  color: darkslateblue;
+  font-weight: 800;
 }
 
 .clock {
-    background-color: darkslateblue;
-    width: 600px;
-    min-height: 200px;
-    margin: 50px;
-    border-radius: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  background-color: darkslateblue;
+  width: 600px;
+  min-height: 200px;
+  margin: 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-.clock>.display {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    flex: 33% 34% 33%;
-    color: thistle;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 80px;
+.clock > .display {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex: 33% 34% 33%;
+  color: thistle;
+  font-family: "Source Code Pro", monospace;
+  font-size: 80px;
 }
 
-.clock>.display>.number {
-    margin: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: darkblue;
-    border-radius: 10px;
+.clock > .display > .number {
+  margin: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: darkblue;
+  border-radius: 10px;
 }
 
-.controls>button {
-    background: none;
-    border-style: none;
+.clock > .controls > button {
+  background: none;
+  border-style: none;
 }
 
-.controls>button>span {
-    font-size: 80px;
-    color: thistle;
+.clock > .controls > button > span {
+  font-size: 80px;
+  color: thistle;
 }
 
-.settimer {
-    font-family: 'Noto Sans JP', sans-serif;
-    color: thistle;
-    font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 10px;
+.clock > .settimer {
+  font-family: "Noto Sans JP", sans-serif;
+  color: thistle;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.settimer>.label {
-    padding-right: 10px;
+.clock > .settimer > .label {
+  padding-right: 10px;
 }
 
-.settimer>input {
-    background-color: thistle;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    color: darkslateblue;
-    width: 60px;
-    padding-left: 10px;
+.clock > .settimer > input {
+  background-color: thistle;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: darkslateblue;
+  width: 60px;
+  padding-left: 10px;
 }
