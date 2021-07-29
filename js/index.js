@@ -10,7 +10,7 @@ function reset() {
     document.getElementById("start").innerHTML = "<span class='material-icons'>play_circle_filled</span>";
     document.getElementById("pause").innerHTML = "<span class='material-icons'>pause_circle_filled</span>";
     firstStart = false;
-    
+
     document.getElementById("hour").innerHTML = "00";
     document.getElementById("minute").innerHTML = "00";
     document.getElementById("second").innerHTML = "00";
@@ -33,7 +33,7 @@ function start() {
 }
 
 function pause() {
-    if(firstStart) { //prevents pause to be pressed before pressing start after a reset
+    if (firstStart) { //prevents pause to be pressed before pressing start after a reset
         if (running) {
             remainingTime = endTime - Date.now();
             clearInterval(cron);
@@ -57,13 +57,13 @@ function update() {
     if (milisseconds <= 0) {
         if (pomodoro) {
             pomodoro = false;
-            endTime = Date.now() + 5 * 60 * 1000;
+            endTime = Date.now() + 5 * 60 * 1000; //5 minutes max for pausing
         } else {
             start();
         }
         alertSound.play();
     } else {
-        let seconds = Math.floor((milisseconds+800) / 1000);
+        let seconds = Math.floor((milisseconds + 800) / 1000);
         document.getElementById("second").innerHTML = format(seconds % 60);
 
         let minutes = Math.floor(seconds / 60);
