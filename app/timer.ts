@@ -37,11 +37,16 @@ class Timer {
             this.running = false;
             return this.getTime();
         }
+
         if (this.running) {
             this.running = false;
             this.remainingTime = this.endTime - Date.now();
             if (this.remainingTime < 0) this.remainingTime = 0;
+        } else {
+            this.running = true;
+            this.endTime = Date.now() + this.remainingTime;
         }
+        return this.getTime();
     }
 
     start(): [number, number, number] {
