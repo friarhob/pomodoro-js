@@ -1,3 +1,5 @@
+import { NegativeMinutesError } from "./error/negativeMinutesError";
+
 class Timer {
     private running: boolean;
     private resetted: boolean;
@@ -6,6 +8,9 @@ class Timer {
     private remainingTime: number;
 
     constructor(minutes: number) {
+        if(minutes < 0)
+            throw new NegativeMinutesError("Passing negative value to Timer constructor");
+            
         this.minutes = minutes;
         this.running = false;
         this.endTime = Date.now();
