@@ -1,9 +1,14 @@
+import { NegativeMinutesError } from '../error/negativeMinutesError';
 import Timer from './../timer';
 
 describe('Testing Timer object', () => {
     test('creating object', () => {
-        var timer = new Timer(5);
-        expect(timer).toBeInstanceOf(Timer);
+        expect(new Timer(5)).toBeInstanceOf(Timer);
+    });
+    test('throwing error when parameter < 0', () => {
+        expect(() => {
+            var timer = new Timer(-1);
+        }).toThrowError(NegativeMinutesError);         
     });
 });
 

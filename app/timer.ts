@@ -10,7 +10,6 @@ class Timer {
     constructor(minutes: number) {
         if(minutes < 0)
             throw new NegativeMinutesError("Passing negative value to Timer constructor");
-            
         this.minutes = minutes;
         this.running = false;
         this.endTime = Date.now();
