@@ -73,6 +73,14 @@ describe('Testing start method', () => {
 });
 
 describe('Testing pause method', () => {
+    test('pause returning an array of 3 elements', () => {
+        var timer = new Timer(5);
+        var time = timer.pause();
+
+        expect(time).toBeInstanceOf(Array);
+        expect(time).toHaveLength(3);
+    });
+
     test('pauses Timer when called', () => {
         var timer = new Timer(5);
 
@@ -101,5 +109,16 @@ describe('Testing pause method', () => {
         timer.pause();
         expect(timer.hasStarted()).toBeFalsy();
         expect(timer.isRunning()).toBeFalsy();
+    });
+
+    test('calling status after ending just resets Timer', () => {
+        var timer = new Timer(0);
+        timer.start();
+
+        new Promise(() => setTimeout(() => null, 100)).then(() => {
+            var time = timer.pause();
+            expect(time).toBe([0,0,0]);
+            expect(timer.hasStarted()).toBeFalsy();
+        });
     });
 });

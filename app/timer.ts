@@ -54,7 +54,7 @@ class Timer {
         if (this.running) {
             this.running = false;
             this.remainingTime = this.endTime - Date.now();
-            if (this.remainingTime < 0) this.remainingTime = 0;
+            this.updateStatus();
         }
         return this.getTime();
     }
@@ -68,6 +68,7 @@ class Timer {
         if (!this.running) {
             this.running = true;
             this.endTime = Date.now() + this.remainingTime;
+            this.updateStatus();
         }
         return this.getTime();
     }
