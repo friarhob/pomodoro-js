@@ -17,17 +17,26 @@ class Timer {
         this.remainingTime = 0;
     }
 
+    private updateStatus(): void {
+        let milisseconds = this.running
+            ? this.endTime - Date.now()
+            : this.remainingTime;
+
+        if (milisseconds < 0) {
+            this.running = false;
+            this.resetted = true;
+
+        }
+    }
+
     getTime(): [number, number, number] {
+        this.updateStatus();
+
         if (this.resetted) return [0, 0, 0];
 
         let milisseconds = this.running
             ? this.endTime - Date.now()
             : this.remainingTime;
-        if (milisseconds < 0) {
-            this.running = false;
-            this.resetted = true;
-            return [0, 0, 0];
-        }
 
         let seconds = Math.floor((milisseconds + 800) / 1000);
         let minutes = Math.floor(seconds / 60);
@@ -80,10 +89,12 @@ class Timer {
     }
 
     isRunning(): boolean {
+        this.updateStatus();
         return this.running;
     }
 
     hasStarted(): boolean {
+        this.updateStatus();
         return !this.resetted;
     }
 }

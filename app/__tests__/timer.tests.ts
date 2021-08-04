@@ -10,6 +10,14 @@ describe('Testing Timer object', () => {
             var timer = new Timer(-1);
         }).toThrowError(NegativeMinutesError);         
     });
+    test('resetting after time is over', () => {
+        var timer = new Timer(0);
+        timer.start();
+
+        new Promise(() => setTimeout(() => null, 100)).then(() => {
+            expect(timer.hasStarted()).toBeFalsy();
+        });
+    });
 });
 
 describe('Testing getTime method', () => {
@@ -60,6 +68,38 @@ describe('Testing start method', () => {
         timer.pause();
         timer.start();
 
+        expect(timer.isRunning()).toBeFalsy();
+    });
+});
+
+describe('Testing pause method', () => {
+    test('pauses Timer when called', () => {
+        var timer = new Timer(5);
+
+        timer.start();
+        var time = timer.pause();
+        new Promise(() => setTimeout(() => null, 100)).then(() => {
+            expect(time).toBe(timer.getTime());
+            expect(timer.isRunning()).toBeFalsy();
+        });
+    });
+
+    test('calling pause twice has no different effect than calling once', () => {
+        var timer = new Timer(5);
+
+        timer.start();
+        expect(timer.isRunning()).toBeTruthy();
+
+        timer.pause();
+        timer.pause();
+        expect(timer.isRunning()).toBeFalsy();
+    });
+
+    test('calling pause before starting does nothing', () => {
+        var timer = new Timer(5);
+
+        timer.pause();
+        expect(timer.hasStarted()).toBeFalsy();
         expect(timer.isRunning()).toBeFalsy();
     });
 });
