@@ -46,7 +46,17 @@ class Timer {
             this.running = false;
             this.remainingTime = this.endTime - Date.now();
             if (this.remainingTime < 0) this.remainingTime = 0;
-        } else {
+        }
+        return this.getTime();
+    }
+
+    unpause(): [number, number, number] {
+        if (this.resetted) {
+            this.running = false;
+            return this.getTime();
+        }
+
+        if (!this.running) {
             this.running = true;
             this.endTime = Date.now() + this.remainingTime;
         }
@@ -54,7 +64,7 @@ class Timer {
     }
 
     start(): [number, number, number] {
-        if (!this.running) {
+        if (this.resetted) {
             this.endTime = Date.now() + this.minutes * 60 * 1000;
             this.running = true;
             this.resetted = false;
@@ -67,6 +77,10 @@ class Timer {
         this.running = false;
 
         return this.getTime();
+    }
+
+    isRunning(): boolean {
+        return this.running;
     }
 }
 

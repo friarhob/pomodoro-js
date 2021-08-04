@@ -37,3 +37,29 @@ describe('Testing getTime method', () => {
         expect(seconds).toBeGreaterThanOrEqual(0);
     });
 });
+
+describe('Testing start method', () => {
+    test('start returning an array of 3 elements', () => {
+        var timer = new Timer(5);
+        var time = timer.start();
+
+        expect(time).toBeInstanceOf(Array);
+        expect(time).toHaveLength(3);
+    });
+
+    test('start() makes Timer to run', () => {
+        var timer = new Timer(5);
+        timer.start();
+
+        expect(timer.isRunning()).toBeTruthy();
+    });
+
+    test('start() after pause() does nothing', () => {
+        var timer = new Timer(10);
+        timer.start();
+        timer.pause();
+        timer.start();
+
+        expect(timer.isRunning()).toBeFalsy();
+    });
+});
