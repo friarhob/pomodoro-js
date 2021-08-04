@@ -82,6 +82,10 @@ class Timer {
     isRunning(): boolean {
         return this.running;
     }
+
+    hasStarted(): boolean {
+        return !this.resetted;
+    }
 }
 
 export default Timer;
