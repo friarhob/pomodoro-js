@@ -16,7 +16,7 @@ class PomodoroTimer {
      * @type Timer
      * @private
      */
-    private current: Timer;
+    private timer: Timer;
 
     /**
      * Number of minutes of work time
@@ -48,14 +48,14 @@ class PomodoroTimer {
      */
     constructor(workMinutes: number = 25) {
         this.work = true;
-        this.current = new Timer(workMinutes);
+        this.timer = new Timer(workMinutes);
         this.workMinutes = workMinutes;
         this.cron = setInterval(() => {
             this.update();
         }, 100);
         this.running = true;
 
-        this.current.start();
+        this.timer.start();
     }
 
     /**
@@ -64,7 +64,7 @@ class PomodoroTimer {
      * @private
      */
     private update(): void {
-        if (!this.current.hasStarted()) {
+        if (!this.timer.hasStarted()) {
             /* Finished timer */
             this.advance();
         }
@@ -75,7 +75,7 @@ class PomodoroTimer {
      * @returns an array of three integers, representing [hours, minutes, seconds].
      */
     getTime(): [number, number, number] {
-        return this.current.getTime();
+        return this.timer.getTime();
     }
 
     /**
@@ -90,8 +90,8 @@ class PomodoroTimer {
      * Toggles pause button to pause/restart pomodoro timer.
      */
     togglePause(): void {
-        if(this.running) this.current.pause();
-        else this.current.unpause();
+        if(this.running) this.timer.pause();
+        else this.timer.unpause();
 
         this.running = !this.running;
     }
@@ -100,16 +100,16 @@ class PomodoroTimer {
      * Advances to next pomodoro cycle manually.
      */
     advance(): void {
-        this.current = new Timer(this.work ? 5 : this.workMinutes);
+        this.timer = new Timer(this.work ? 5 : this.workMinutes);
         this.work = !this.work;
-        this.current.start();
+        this.timer.start();
     }
 
     /**
      * Check if Pomodoro is in work or play (rest) time.
      * @returns true if it's work time; false if it's play (rest) time.
      */
-    isWorking(): boolean {
+    isWorkTime(): boolean {
         return this.work;
     }
 }

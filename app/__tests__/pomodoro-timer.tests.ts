@@ -18,10 +18,36 @@ describe("Testing PomodoroTimer constructor", () => {
 });
 
 describe("Testing getTime method", () => {
-    test("return an array of three elements", () => {
+    test("returns an array of three elements", () => {
         var pomodoroTimer = new PomodoroTimer();
         var time = pomodoroTimer.getTime();
         expect(time).toBeInstanceOf(Array);
         expect(time).toHaveLength(3);
     });
 });
+
+describe("Testing isRunning method", () => {
+    test("timer created running", () => {
+        var pomodoroTimer = new PomodoroTimer();
+
+        expect(pomodoroTimer.isRunning()).toBeTruthy();
+    });
+});
+
+describe("Testing togglePause method", () => {
+    test("toggle pause once stops timer", () => {
+        var pomodoroTimer = new PomodoroTimer();
+        pomodoroTimer.togglePause();
+
+        expect(pomodoroTimer.isRunning()).toBeFalsy();
+    });
+
+    test("toggle pause twice restarts timer", () => {
+        var pomodoroTimer = new PomodoroTimer();
+        pomodoroTimer.togglePause();
+        pomodoroTimer.togglePause();
+
+        expect(pomodoroTimer.isRunning()).toBeTruthy();
+    })
+});
+
