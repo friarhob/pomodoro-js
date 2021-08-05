@@ -1,8 +1,7 @@
 import Timer from "./timer";
 
 /**
- * Class that creates a Pomodoro dual timer.
- * Works as a "Strategy pattern" to choose which Timer object to follow.
+ * Class that creates a Pomodoro dual timer, based on Timer class.
  */
 class PomodoroTimer {
     /**
