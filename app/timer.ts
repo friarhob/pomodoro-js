@@ -12,8 +12,8 @@ class Timer {
     private remainingTime: number;
 
     /**
-     * Create a timer to a fixed set of minutes
-     * Minutes should be a non-negative number
+     * Create a timer to a fixed set of minutes.
+     * Minutes param should be a non-negative number.
      * @param minutes
      * @throws {NegativeMinutesError} Passing negative value to Timer constructor is not allowed
      */
@@ -28,7 +28,7 @@ class Timer {
     }
 
     /**
-     * Private method to keep all attributes sanitized
+     * Private method to keep all attributes sanitized.
      */
     private updateStatus(): void {
         let milisseconds = this.running
@@ -42,7 +42,7 @@ class Timer {
     }
 
     /**
-     * Gives the current clock status for a timer
+     * Gives the current clock status for a timer.
      * @returns an array of three integers, representing [hours, minutes, seconds]
      */
     getTime(): [number, number, number] {
