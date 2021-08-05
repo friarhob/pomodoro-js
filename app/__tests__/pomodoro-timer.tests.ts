@@ -16,3 +16,12 @@ describe("Testing PomodoroTimer constructor", () => {
         }).toThrowError(NegativeMinutesError);
     });
 });
+
+describe("Testing getTime method", () => {
+    test("return an array of three elements", () => {
+        var pomodoroTimer = new PomodoroTimer();
+        var time = pomodoroTimer.getTime();
+        expect(time).toBeInstanceOf(Array);
+        expect(time).toHaveLength(3);
+    });
+});
