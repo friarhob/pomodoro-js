@@ -12,28 +12,28 @@ class Timer {
     private running: boolean;
 
     /**
-     * @description true if timer is resetted (or just created); false otherwise (either running or paused).
+     * True if timer is resetted (or just created); false otherwise (either running or paused).
      * @type boolean
      * @private
      */
     private resetted: boolean;
     
     /**
-     * @description time the Timer should end, in milisseconds (return from Date.now()).
+     * Time the Timer should end, in milisseconds (return from Date.now()).
      * @type number
      * @private
      */
     private endTime: number;
     
     /**
-     * @description number of minutes the Timer should run when started.
+     * Number of minutes the Timer should run when started.
      * @type number
      * @private
      */
     private minutes: number;
     
     /**
-     * @description remaining time, in milisseconds, to be saved when paused and used to calculate new end time when unpaused
+     * Remaining time, in milisseconds, to be saved when paused and used to calculate new end time when unpaused
      * @type number
      * @private
      */
