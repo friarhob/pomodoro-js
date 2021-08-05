@@ -1,6 +1,8 @@
 import { NegativeMinutesError } from "../errors/negativeMinutesError";
 import Timer from "../timer";
 
+jest.useFakeTimers();
+
 describe("Testing Timer constructor", () => {
     test("creating object", () => {
         expect(new Timer(5)).toBeInstanceOf(Timer);
