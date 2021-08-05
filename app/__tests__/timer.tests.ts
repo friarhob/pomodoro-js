@@ -44,6 +44,17 @@ describe("Testing getTime method of class Timer", () => {
         expect(seconds).toBeLessThan(60);
         expect(seconds).toBeGreaterThanOrEqual(0);
     });
+
+    test('getTime returns zero after time is over', () => {
+        var timer = new Timer(0);
+        timer.start();
+
+        new Promise(() => setTimeout(() => null, 100)).then(() => {
+            var time = timer.getTime();
+
+            expect(time).toBe([0,0,0]);
+        });
+    });
 });
 
 describe("Testing start method of class Timer", () => {
@@ -212,3 +223,4 @@ describe("Testing reset method of class Timer", () => {
         expect(timer.isRunning()).toBeFalsy();
     });
 });
+
