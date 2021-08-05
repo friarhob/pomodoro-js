@@ -4,10 +4,39 @@ import { NegativeMinutesError } from "./errors/negativeMinutesError";
  * @class Class that creates a timer to a fixed set of minutes
  */
 class Timer {
+    /**
+     * @description true if timer is running and not paused; false otherwise.
+     * @type boolean
+     * @private
+     */
     private running: boolean;
+
+    /**
+     * @description true if timer is resetted (or just created); false otherwise (either running or paused).
+     * @type boolean
+     * @private
+     */
     private resetted: boolean;
+    
+    /**
+     * @description time the Timer should end, in milisseconds (return from Date.now()).
+     * @type number
+     * @private
+     */
     private endTime: number;
+    
+    /**
+     * @description number of minutes the Timer should run when started.
+     * @type number
+     * @private
+     */
     private minutes: number;
+    
+    /**
+     * @description remaining time, in milisseconds, to be saved when paused and used to calculate new end time when unpaused
+     * @type number
+     * @private
+     */
     private remainingTime: number;
 
     /**
