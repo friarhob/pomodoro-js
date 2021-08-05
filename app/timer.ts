@@ -1,5 +1,9 @@
-import { NegativeMinutesError } from "./error/negativeMinutesError";
+import { NegativeMinutesError } from "./errors/negativeMinutesError";
 
+/**
+ * @class
+ * Class that creates a timer to a fixed set of minutes
+ */
 class Timer {
     private running: boolean;
     private resetted: boolean;
@@ -7,6 +11,12 @@ class Timer {
     private minutes: number;
     private remainingTime: number;
 
+    /**
+     * Create a timer to a fixed set of minutes
+     * Minutes should be a non-negative number
+     * @param minutes
+     * @throws {NegativeMinutesError} Passing negative value to Timer constructor is not allowed
+     */
     constructor(minutes: number) {
         if(minutes < 0)
             throw new NegativeMinutesError("Passing negative value to Timer constructor is not allowed");
@@ -17,6 +27,9 @@ class Timer {
         this.remainingTime = 0;
     }
 
+    /**
+     * Private method to keep all attributes sanitized
+     */
     private updateStatus(): void {
         let milisseconds = this.running
             ? this.endTime - Date.now()
@@ -28,6 +41,10 @@ class Timer {
         }
     }
 
+    /**
+     * Gives the current clock status for a timer
+     * @returns an array of three integers, representing [hours, minutes, seconds]
+     */
     getTime(): [number, number, number] {
         this.updateStatus();
 
@@ -44,6 +61,11 @@ class Timer {
         return [hours, minutes, seconds];
     }
 
+    /**
+     * Pauses the timer while running.
+     * If the timer is not running, does nothing.
+     * @returns an array of three integers, representing [hours, minutes, seconds]
+     */
     pause(): [number, number, number] {
         if (this.resetted) {
             this.running = false;
@@ -58,6 +80,11 @@ class Timer {
         return this.getTime();
     }
 
+    /**
+     * Unpauses the timer while pause.
+     * If the timer is not paused, does nothing. 
+     * @returns an array of three integers, representing [hours, minutes, seconds] 
+     */
     unpause(): [number, number, number] {
         if (this.resetted) {
             this.running = false;
@@ -72,6 +99,11 @@ class Timer {
         return this.getTime();
     }
 
+    /**
+     * Starts the timer.
+     * If the timer is already running, does nothing.
+     * @returns an array of three integers, representing [hours, minutes, seconds]
+     */
     start(): [number, number, number] {
         if (this.resetted) {
             this.endTime = Date.now() + this.minutes * 60 * 1000;
@@ -81,6 +113,11 @@ class Timer {
         return this.getTime();
     }
 
+    /**
+     * Resets the timer.
+     * If the timer is already resetted, does nothing.
+     * @returns an array like [0,0,0], representing [hours, minutes, seconds]
+     */
     reset(): [number, number, number] {
         this.resetted = true;
         this.running = false;
@@ -88,12 +125,20 @@ class Timer {
         return this.getTime();
     }
 
+    /**
+     * Checks if the timer is running.
+     * @returns a boolean
+     */
     isRunning(): boolean {
         this.updateStatus();
         return this.running;
     }
 
-    hasStarted(): boolean {
+    /**
+     * Checks if the timer has already started (either running or paused).
+     * @returns a boolean
+     */
+     hasStarted(): boolean {
         this.updateStatus();
         return !this.resetted;
     }

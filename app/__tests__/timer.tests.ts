@@ -1,5 +1,6 @@
-import { NegativeMinutesError } from "../error/negativeMinutesError";
-import Timer from "./../timer";
+import { NegativeMinutesError } from "../errors/negativeMinutesError";
+import Timer from "../timer";
+
 
 describe("Testing Timer constructor", () => {
     test("creating object", () => {
