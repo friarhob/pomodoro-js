@@ -25,7 +25,6 @@ class Timer {
         if (milisseconds < 0) {
             this.running = false;
             this.resetted = true;
-
         }
     }
 

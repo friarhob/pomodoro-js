@@ -20,7 +20,7 @@ describe("Testing Timer constructor", () => {
     });
 });
 
-describe("Testing getTime method", () => {
+describe("Testing getTime method of class Timer", () => {
     test("getTime returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.getTime();
@@ -46,7 +46,7 @@ describe("Testing getTime method", () => {
     });
 });
 
-describe("Testing start method", () => {
+describe("Testing start method of class Timer", () => {
     test("start returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.start();
@@ -72,7 +72,7 @@ describe("Testing start method", () => {
     });
 });
 
-describe("Testing pause method", () => {
+describe("Testing pause method of class Timer", () => {
     test("pause returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.pause();
@@ -123,7 +123,7 @@ describe("Testing pause method", () => {
     });
 });
 
-describe("Testing unpause method", () => {
+describe("Testing unpause method of class Timer", () => {
     test("unpause returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.unpause();
@@ -172,5 +172,43 @@ describe("Testing unpause method", () => {
             expect(time).toBe([0, 0, 0]);
             expect(timer.hasStarted()).toBeFalsy();
         });
+    });
+});
+
+describe("Testing reset method of class Timer", () => {
+    test("reset returning an array of 3 elements", () => {
+        var timer = new Timer(5);
+        var time = timer.reset();
+
+        expect(time).toBeInstanceOf(Array);
+        expect(time).toHaveLength(3);
+    });
+
+    test("calling reset after start resets the Timer", () => {
+        var timer = new Timer(5);
+        timer.start();
+        timer.reset();
+
+        expect(timer.hasStarted()).toBeFalsy();
+        expect(timer.isRunning()).toBeFalsy();
+    });
+
+    test("calling reset while paused resets the Timer", () => {
+        var timer = new Timer(5);
+        timer.start();
+        timer.pause();
+        timer.reset();
+
+        expect(timer.hasStarted()).toBeFalsy();
+        expect(timer.isRunning()).toBeFalsy();
+    });
+
+
+    test("calling reset before start does nothing", () => {
+        var timer = new Timer(0);
+        timer.reset();
+
+        expect(timer.hasStarted()).toBeFalsy();
+        expect(timer.isRunning()).toBeFalsy();
     });
 });
