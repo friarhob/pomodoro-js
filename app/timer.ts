@@ -1,11 +1,11 @@
 import { NegativeMinutesError } from "./errors/negativeMinutesError";
 
 /**
- * @class Class that creates a timer to a fixed set of minutes
+ * Class that creates a timer to a fixed set of minutes
  */
 class Timer {
     /**
-     * @description true if timer is running and not paused; false otherwise.
+     * True if timer is running and not paused; false otherwise.
      * @type boolean
      * @private
      */
