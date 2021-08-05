@@ -1,14 +1,13 @@
 import { NegativeMinutesError } from "../errors/negativeMinutesError";
 import Timer from "../timer";
 
-
 describe("Testing Timer constructor", () => {
     test("creating object", () => {
         expect(new Timer(5)).toBeInstanceOf(Timer);
     });
     test("throwing error when parameter < 0", () => {
         expect(() => {
-            var timer = new Timer(-1);
+            new Timer(-1);
         }).toThrowError(NegativeMinutesError);
     });
     test("resetting after time is over", () => {
@@ -46,14 +45,14 @@ describe("Testing getTime method of class Timer", () => {
         expect(seconds).toBeGreaterThanOrEqual(0);
     });
 
-    test('getTime returns zero after time is over', () => {
+    test("getTime returns zero after time is over", () => {
         var timer = new Timer(0);
         timer.start();
 
         new Promise(() => setTimeout(() => null, 100)).then(() => {
             var time = timer.getTime();
 
-            expect(time).toBe([0,0,0]);
+            expect(time).toBe([0, 0, 0]);
         });
     });
 });
@@ -215,7 +214,6 @@ describe("Testing reset method of class Timer", () => {
         expect(timer.isRunning()).toBeFalsy();
     });
 
-
     test("calling reset before start does nothing", () => {
         var timer = new Timer(0);
         timer.reset();
@@ -224,4 +222,3 @@ describe("Testing reset method of class Timer", () => {
         expect(timer.isRunning()).toBeFalsy();
     });
 });
-

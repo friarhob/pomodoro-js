@@ -1,8 +1,7 @@
 import { NegativeMinutesError } from "./errors/negativeMinutesError";
 
 /**
- * @class
- * Class that creates a timer to a fixed set of minutes
+ * @class Class that creates a timer to a fixed set of minutes
  */
 class Timer {
     private running: boolean;
@@ -18,8 +17,10 @@ class Timer {
      * @throws {NegativeMinutesError} Passing negative value to Timer constructor is not allowed
      */
     constructor(minutes: number) {
-        if(minutes < 0)
-            throw new NegativeMinutesError("Passing negative value to Timer constructor is not allowed");
+        if (minutes < 0)
+            throw new NegativeMinutesError(
+                "Passing negative value to Timer constructor is not allowed"
+            );
         this.minutes = minutes;
         this.running = false;
         this.endTime = Date.now();
@@ -82,8 +83,8 @@ class Timer {
 
     /**
      * Unpauses the timer while pause.
-     * If the timer is not paused, does nothing. 
-     * @returns an array of three integers, representing [hours, minutes, seconds] 
+     * If the timer is not paused, does nothing.
+     * @returns an array of three integers, representing [hours, minutes, seconds]
      */
     unpause(): [number, number, number] {
         if (this.resetted) {
@@ -138,7 +139,7 @@ class Timer {
      * Checks if the timer has already started (either running or paused).
      * @returns a boolean
      */
-     hasStarted(): boolean {
+    hasStarted(): boolean {
         this.updateStatus();
         return !this.resetted;
     }
