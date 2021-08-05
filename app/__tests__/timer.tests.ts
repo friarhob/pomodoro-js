@@ -1,16 +1,16 @@
-import { NegativeMinutesError } from '../error/negativeMinutesError';
-import Timer from './../timer';
+import { NegativeMinutesError } from "../error/negativeMinutesError";
+import Timer from "./../timer";
 
-describe('Testing Timer object', () => {
-    test('creating object', () => {
+describe("Testing Timer constructor", () => {
+    test("creating object", () => {
         expect(new Timer(5)).toBeInstanceOf(Timer);
     });
-    test('throwing error when parameter < 0', () => {
+    test("throwing error when parameter < 0", () => {
         expect(() => {
             var timer = new Timer(-1);
-        }).toThrowError(NegativeMinutesError);         
+        }).toThrowError(NegativeMinutesError);
     });
-    test('resetting after time is over', () => {
+    test("resetting after time is over", () => {
         var timer = new Timer(0);
         timer.start();
 
@@ -20,8 +20,8 @@ describe('Testing Timer object', () => {
     });
 });
 
-describe('Testing getTime method', () => {
-    test('getTime returning an array of 3 elements', () => {
+describe("Testing getTime method", () => {
+    test("getTime returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.getTime();
 
@@ -29,16 +29,16 @@ describe('Testing getTime method', () => {
         expect(time).toHaveLength(3);
     });
 
-    test('ranges of minutes returned by getTime', () => {
-        var timer = new Timer (100);
+    test("ranges of minutes returned by getTime", () => {
+        var timer = new Timer(100);
         var [_, minutes, _] = timer.getTime();
 
         expect(minutes).toBeLessThan(60);
         expect(minutes).toBeGreaterThanOrEqual(0);
     });
 
-    test('ranges of seconds returned by getTime', () => {
-        var timer = new Timer (100);
+    test("ranges of seconds returned by getTime", () => {
+        var timer = new Timer(100);
         var [_, _, seconds] = timer.getTime();
 
         expect(seconds).toBeLessThan(60);
@@ -46,8 +46,8 @@ describe('Testing getTime method', () => {
     });
 });
 
-describe('Testing start method', () => {
-    test('start returning an array of 3 elements', () => {
+describe("Testing start method", () => {
+    test("start returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.start();
 
@@ -55,14 +55,14 @@ describe('Testing start method', () => {
         expect(time).toHaveLength(3);
     });
 
-    test('start() makes Timer to run', () => {
+    test("start() makes Timer to run", () => {
         var timer = new Timer(5);
         timer.start();
 
         expect(timer.isRunning()).toBeTruthy();
     });
 
-    test('start() after pause() does nothing', () => {
+    test("start() after pause() does nothing", () => {
         var timer = new Timer(10);
         timer.start();
         timer.pause();
@@ -72,8 +72,8 @@ describe('Testing start method', () => {
     });
 });
 
-describe('Testing pause method', () => {
-    test('pause returning an array of 3 elements', () => {
+describe("Testing pause method", () => {
+    test("pause returning an array of 3 elements", () => {
         var timer = new Timer(5);
         var time = timer.pause();
 
@@ -81,7 +81,7 @@ describe('Testing pause method', () => {
         expect(time).toHaveLength(3);
     });
 
-    test('pauses Timer when called', () => {
+    test("pauses Timer when called", () => {
         var timer = new Timer(5);
 
         timer.start();
@@ -92,7 +92,7 @@ describe('Testing pause method', () => {
         });
     });
 
-    test('calling pause twice has no different effect than calling once', () => {
+    test("calling pause twice has no different effect than calling once", () => {
         var timer = new Timer(5);
 
         timer.start();
@@ -103,7 +103,7 @@ describe('Testing pause method', () => {
         expect(timer.isRunning()).toBeFalsy();
     });
 
-    test('calling pause before starting does nothing', () => {
+    test("calling pause before starting does nothing", () => {
         var timer = new Timer(5);
 
         timer.pause();
@@ -111,13 +111,65 @@ describe('Testing pause method', () => {
         expect(timer.isRunning()).toBeFalsy();
     });
 
-    test('calling status after ending just resets Timer', () => {
+    test("calling pause after ending just resets Timer", () => {
         var timer = new Timer(0);
         timer.start();
 
         new Promise(() => setTimeout(() => null, 100)).then(() => {
             var time = timer.pause();
-            expect(time).toBe([0,0,0]);
+            expect(time).toBe([0, 0, 0]);
+            expect(timer.hasStarted()).toBeFalsy();
+        });
+    });
+});
+
+describe("Testing unpause method", () => {
+    test("unpause returning an array of 3 elements", () => {
+        var timer = new Timer(5);
+        var time = timer.unpause();
+
+        expect(time).toBeInstanceOf(Array);
+        expect(time).toHaveLength(3);
+    });
+
+    test("calling unpause after pause keeps the Timer running", () => {
+        var timer = new Timer(5);
+
+        timer.start();
+        timer.pause();
+        expect(timer.isRunning()).toBeFalsy();
+
+        timer.unpause();
+        expect(timer.isRunning()).toBeTruthy();
+    });
+
+    test("calling unpause twice has no different effect than calling once", () => {
+        var timer = new Timer(5);
+
+        timer.start();
+        timer.pause();
+        expect(timer.isRunning()).toBeFalsy();
+
+        timer.unpause();
+        timer.unpause();
+        expect(timer.isRunning()).toBeTruthy();
+    });
+
+    test("calling unpause before starting does nothing", () => {
+        var timer = new Timer(5);
+
+        timer.unpause();
+        expect(timer.hasStarted()).toBeFalsy();
+        expect(timer.isRunning()).toBeFalsy();
+    });
+
+    test("calling unpause after ending just resets Timer", () => {
+        var timer = new Timer(0);
+        timer.start();
+
+        new Promise(() => setTimeout(() => null, 100)).then(() => {
+            var time = timer.unpause();
+            expect(time).toBe([0, 0, 0]);
             expect(timer.hasStarted()).toBeFalsy();
         });
     });
