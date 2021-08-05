@@ -1,7 +1,7 @@
 import { NegativeMinutesError } from "./errors/negativeMinutesError";
 
 /**
- * Class that creates a timer to a fixed set of minutes
+ * Class that creates a timer to a fixed set of minutes.
  */
 class Timer {
     /**
@@ -40,9 +40,9 @@ class Timer {
     private remainingTime: number;
 
     /**
-     * Create a timer to a fixed set of minutes.
+     * Create a timer to a fixed amount of minutes.
      * Minutes param should be a non-negative number.
-     * @param minutes
+     * @param {number} minutes number of minutes.
      * @throws {NegativeMinutesError} Passing negative value to Timer constructor is not allowed
      */
     constructor(minutes: number) {
@@ -59,6 +59,7 @@ class Timer {
 
     /**
      * Private method to keep all attributes sanitized.
+     * @private
      */
     private updateStatus(): void {
         let milisseconds = this.running
