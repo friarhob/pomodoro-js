@@ -51,3 +51,20 @@ describe("Testing togglePause method", () => {
     })
 });
 
+describe("Testing advance method", () => {
+    test("calling advance while on work moves it to play", () => {
+        var pomodoroTimer = new PomodoroTimer();
+        pomodoroTimer.advance();
+
+        expect(pomodoroTimer.isWorkTime()).toBeFalsy();
+    });
+
+    test("calling advance while on play moves it to work", () => {
+        var pomodoroTimer = new PomodoroTimer();
+        pomodoroTimer.advance();
+        pomodoroTimer.advance();
+
+        expect(pomodoroTimer.isWorkTime()).toBeTruthy();
+    });
+});
+
