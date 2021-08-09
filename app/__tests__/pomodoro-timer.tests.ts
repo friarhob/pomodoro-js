@@ -1,5 +1,5 @@
 import { NegativeMinutesError } from "../errors/negativeMinutesError";
-import PomodoroTimer from "../pomodoro-timer";
+import { PomodoroTimer } from "../pomodoro-timer";
 
 jest.useFakeTimers();
 

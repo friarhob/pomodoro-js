@@ -1,5 +1,5 @@
 import { NegativeMinutesError } from "../errors/negativeMinutesError";
-import Timer from "../timer";
+import { Timer } from "../timer";
 
 jest.useFakeTimers();
 

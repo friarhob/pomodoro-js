@@ -1,4 +1,4 @@
-import PomodoroTimer from "./pomodoro-timer";
+import { PomodoroTimer } from "./pomodoro-timer";
 
 class App {
     private pomodoro: PomodoroTimer;

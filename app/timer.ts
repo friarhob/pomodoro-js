@@ -3,7 +3,7 @@ import { NegativeMinutesError } from "./errors/negativeMinutesError";
 /**
  * Class that creates a timer to a fixed set of minutes.
  */
-class Timer {
+export class Timer {
     /**
      * True if timer is running and not paused; false otherwise.
      * @type boolean
@@ -174,5 +174,3 @@ class Timer {
         return !this.resetted;
     }
 }
-
-export default Timer;

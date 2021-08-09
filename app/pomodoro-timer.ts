@@ -1,9 +1,9 @@
-import Timer from "./timer";
+import { Timer } from "./timer";
 
 /**
  * Class that creates a Pomodoro dual timer, based on Timer class.
  */
-class PomodoroTimer {
+export class PomodoroTimer {
     /**
      * True if it's work time, false otherwise.
      * @type boolean
@@ -113,5 +113,3 @@ class PomodoroTimer {
         return this.work;
     }
 }
-
-export default PomodoroTimer;
