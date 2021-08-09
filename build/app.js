@@ -1,50 +1,40 @@
 import { PomodoroTimer } from "./pomodoro-timer";
-
 class App {
-    private pomodoro: PomodoroTimer;
-    private cron: NodeJS.Timer;
-
     constructor() {
         this.pomodoro = null;
         this.cron = setInterval(() => {
             this.updateTimer();
         }, 20);
     }
-
-    private updateTimer(): void {
+    updateTimer() {
         var hours = 0;
         var minutes = 0;
         var seconds = 0;
-        if(this.pomodoro) {
+        if (this.pomodoro) {
             [hours, minutes, seconds] = this.pomodoro.getTime();
         }
-        
         document.getElementById("second").innerHTML = this.format(seconds);
         document.getElementById("minute").innerHTML = this.format(minutes);
         document.getElementById("hour").innerHTML = this.format(hours);
     }
-
-    private format(number: number): string {
-        return ((number >= 10)?"":"0")+number;
+    format(number) {
+        return ((number >= 10) ? "" : "0") + number;
     }
-
-    start(): void {
-        if(this.pomodoro) {
+    start() {
+        if (this.pomodoro) {
             this.pomodoro.advance();
-        } else {
+        }
+        else {
             this.pomodoro = new PomodoroTimer();
         }
     }
-
-    togglePause(): void {
-        if(this.pomodoro) {
+    togglePause() {
+        if (this.pomodoro) {
             this.pomodoro.togglePause();
         }
     }
-
-    reset(): void {
+    reset() {
         this.pomodoro = null;
     }
 }
-
 var app = new App();
