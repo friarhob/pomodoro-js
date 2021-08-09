@@ -19,8 +19,8 @@ class App {
             [hours, minutes, seconds] = this.pomodoro.getTime();
         }
         
-        document.getElementById("second").innerHTML = this.format(seconds % 60);
-        document.getElementById("minute").innerHTML = this.format(minutes % 60);
+        document.getElementById("second").innerHTML = this.format(seconds);
+        document.getElementById("minute").innerHTML = this.format(minutes);
         document.getElementById("hour").innerHTML = this.format(hours);
     }
 
