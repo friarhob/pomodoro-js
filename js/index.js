@@ -32,7 +32,7 @@ function start() {
     }, 100);
 }
 
-function pause() {
+function togglePause() {
     if (firstStart) { //prevents pause to be pressed before pressing start after a reset
         if (running) {
             remainingTime = endTime - Date.now();
@@ -78,3 +78,9 @@ function format(number) {
     if (number >= 10) return "" + number;
     return "0" + number;
 }
+
+var app = {};
+
+app.start = start;
+app.togglePause = togglePause;
+app.reset = reset;
