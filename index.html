@@ -14,7 +14,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="styles/styles.css">
-    <!-- <script src="js/app.js" defer></script> -->
+    <!-- <script type="module" src="build/app.js"></script> -->
     <script src="js/index.js" defer></script>
     <title>Pomodoro App</title>
 </head>
@@ -29,7 +29,7 @@
                 <div class="number" id="second">00</div>
             </div>
             <div class="controls">
-                <button type="button" id="start" onclick="app.start()"><span
+                <button type="button" id="start" onclick="myApp().start()"><span
                         class="material-icons">play_circle_filled</span></button>
                 <button type="button" id="pause" onclick="app.togglePause()"><span
                         class="material-icons">pause_circle_filled</span></button>
