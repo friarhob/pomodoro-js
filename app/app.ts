@@ -46,3 +46,5 @@ export class App {
         this.pomodoro = null;
     }
 }
+
+var app = new App();

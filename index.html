@@ -1,51 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link rel="stylesheet" href="styles/styles.css" />
+        <!-- <script src="build-common/app.js" defer></script> -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles/styles.css">
-    <!-- <script src="build/bundle.js" defer></script> -->
-    <script src="js/index.js" defer></script>
-    <title>Pomodoro App</title>
-</head>
+        <!-- <script src="js/bundle.js" defer></script>
+        <script defer>
+            var app = new App();
+        </script> -->
+        <script src="js/index.js" defer></script>
+        <title>Pomodoro App</title>
+    </head>
 
-<body>
-    <div class="card">
-        <h1>Pomodoro App</h1>
-        <div class="clock">
-            <div class="display">
-                <div class="number" id="hour">00</div>
-                <div class="number" id="minute">00</div>
-                <div class="number" id="second">00</div>
+    <body>
+        <div class="card">
+            <h1>Pomodoro App</h1>
+            <div class="clock">
+                <div class="display">
+                    <div class="number" id="hour">00</div>
+                    <div class="number" id="minute">00</div>
+                    <div class="number" id="second">00</div>
+                </div>
+                <div class="controls">
+                    <button type="button" id="start" onclick="app.start()">
+                        <span class="material-icons">play_circle_filled</span>
+                    </button>
+                    <button
+                        type="button"
+                        id="pause"
+                        onclick="app.togglePause()"
+                    >
+                        <span class="material-icons">pause_circle_filled</span>
+                    </button>
+                    <button type="button" id="reset" onclick="app.reset()">
+                        <span class="material-icons">replay_circle_filled</span>
+                    </button>
+                </div>
+                <div class="settimer">
+                    <span class="label">Set timer (minutes):</span>
+                    <input type="number" id="pomodoro-minutes" value="25" />
+                </div>
             </div>
-            <div class="controls">
-                <button type="button" id="start" onclick="app.start()"><span
-                        class="material-icons">play_circle_filled</span></button>
-                <button type="button" id="pause" onclick="app.togglePause()"><span
-                        class="material-icons">pause_circle_filled</span></button>
-                <button type="button" id="reset" onclick="app.reset()"><span
-                        class="material-icons">replay_circle_filled</span></button>
-            </div>
-            <div class="settimer">
-                <span class="label">Set timer (minutes):</span>
-                <input type="number" id="pomodoro-minutes" value="25">
+            <div class="tasks">
+                <div class="newtask"></div>
+                <div class="tasklist"></div>
             </div>
         </div>
-        <div class="tasks">
-            <div class="newtask"></div>
-            <div class="tasklist"></div>
-        </div>
-    </div>
-</body>
-
+    </body>
 </html>

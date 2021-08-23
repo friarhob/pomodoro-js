@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "amd",
+        "target": "es2015",
+        "module": "commonjs",
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "outFile": "build/bundle.js"
+        "rootDir": "app",
+        "outDir": "build"
     },
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Recommended",
