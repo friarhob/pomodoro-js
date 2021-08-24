@@ -47,4 +47,4 @@ export class App {
     }
 }
 
-var app = new App();
+export var app = new App();
