@@ -1,6 +1,6 @@
 import { PomodoroTimer } from "./pomodoro-timer";
 
-export class App {
+class App {
     private pomodoro: PomodoroTimer;
     private cron: NodeJS.Timer;
 
@@ -47,4 +47,4 @@ export class App {
     }
 }
 
-export var app = new App();
+var app = new App();
