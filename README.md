@@ -4,9 +4,9 @@ An online pomodoro timer.
 
 ## Resources
 
-PomodoroJS is available in [link].
+PomodoroJS is available in [GitHub Pages](https://friarhob.github.io/pomodoro-js/).
 
-Icons are from Google's [Material Icons] font.
+Icons are from Google's [Material Icons](https://fonts.google.com/icons) font.
 
 ## TO-DOs
 
